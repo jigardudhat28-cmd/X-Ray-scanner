@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+<div class="page-head"><h1>About the system</h1></div>
+<div class="card info">
+  <dl>
+    <dt>What is the AI X-Ray Scanner System?</dt>
+    <dd>A web application that analyses a chest X-ray image with a trained deep-learning model and reports whether it looks Normal or shows signs of Pneumonia.</dd>
+    <dt>How are AI and CNN used?</dt>
+    <dd>A Convolutional Neural Network learns visual patterns, such as edges, textures and opacities in the lungs, from thousands of labelled X-rays. This project uses transfer learning: MobileNetV2, pretrained on ImageNet, is fine-tuned on a public chest X-ray dataset.</dd>
+    <dt>What does it detect?</dt>
+    <dd>Two classes only: <strong>Normal</strong> and <strong>Pneumonia</strong>. It does not detect any other disease.</dd>
+    <dt>How does the analysis work?</dt>
+    <dd>
+      <ul>
+        <li>The uploaded image is checked to make sure it looks like a chest X-ray.</li>
+        <li>It is resized to 224 x 224 pixels and normalised.</li>
+        <li>The CNN outputs a probability for Pneumonia; the Normal probability is the remainder.</li>
+        <li>The higher probability becomes the prediction, shown with its confidence.</li>
+      </ul>
+    </dd>
+    <dt>Purpose</dt>
+    <dd>An M.Sc. AI &amp; ML Semester 3 academic project demonstrating deep learning in medical image classification.</dd>
+    <dt>Technology used</dt>
+    <dd>Python, Flask, TensorFlow/Keras, NumPy, Pillow, scikit-learn, SQLite, HTML, CSS and JavaScript.</dd>
+    <dt>Limitations</dt>
+    <dd>
+      <ul>
+        <li>Trained on one public dataset; results may not carry over to other hospitals or X-ray machines.</li>
+        <li>The image check is a simple rule-based filter and can occasionally accept or reject the wrong image.</li>
+        <li>Confidence scores are model outputs, not clinical certainty.</li>
+      </ul>
+    </dd>
+  </dl>
+  <div class="disclaimer"><strong>Academic demo only.</strong> This system is not a medical device and is not a replacement for professional medical diagnosis. Always consult a qualified doctor.</div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+{% block content %}
+{% set bad = scan.label == 'Pneumonia' %}
+<div class="page-head"><h1>Scan result</h1></div>
+<div class="card">
+  <div class="result-grid">
+    <div class="xray"><img src="{{ url_for('uploaded_file', name=scan.file) }}" alt="Uploaded chest X-ray"></div>
+    <div>
+      <div class="verdict {{ 'bad' if bad }}">{{ 'Pneumonia Detected' if bad else 'Normal' }}</div>
+      <p><strong>Prediction:</strong> {{ scan.label }}<br><strong>Confidence:</strong> {{ scan.confidence }}%</p>
+      <div class="meter">
+        <div><span>Normal</span><span>{{ scan.normal }}%</span></div>
+        <div class="bar"><i style="width:{{ scan.normal }}%"></i></div>
+        <div><span>Pneumonia</span><span>{{ scan.pneumonia }}%</span></div>
+        <div class="bar"><i class="bad" style="width:{{ scan.pneumonia }}%"></i></div>
+      </div>
+      <div class="disclaimer">This prediction is for academic/research demonstration only and is not a medical diagnosis.</div>
+    </div>
+  </div>
+  <p style="margin-top:28px"><a class="btn" href="{{ url_for('upload') }}">Scan Another X-Ray</a></p>
+</div>
+{% endblock %}

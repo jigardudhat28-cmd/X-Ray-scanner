@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="logo">AI X-Ray Scanner</div>
+  <h1>Create account</h1>
+  <form method="post" novalidate>
+    <label for="name">Full Name</label>
+    <input id="name" name="name" type="text" value="{{ name or '' }}" required autofocus>
+    <label for="email">Email / User ID</label>
+    <input id="email" name="email" type="text" value="{{ email or '' }}" required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" required>
+    <label for="confirm">Confirm Password</label>
+    <input id="confirm" name="confirm" type="password" autocomplete="new-password" required>
+    <button class="btn" type="submit">Register</button>
+  </form>
+  <p class="alt"><a href="{{ url_for('login') }}">Back to Login</a></p>
+</div>
+{% endblock %}

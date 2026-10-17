@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Upload X-Ray{% endblock %}
+{% block content %}
+<div class="page-head"><h1>Upload Chest X-Ray</h1></div>
+<div class="card">
+  <div id="uploadError" class="alert error" role="alert" hidden></div>
+  <label class="drop" for="xrayFile">
+    <strong>Upload Chest X-Ray</strong>
+    <span>Tap or click to choose an image (PNG, JPG, JPEG, max 10 MB)</span>
+    <input id="xrayFile" type="file" accept="image/*">
+  </label>
+  <div id="preview" class="preview" hidden>
+    <img id="previewImg" alt="Selected chest X-ray preview">
+    <div><button id="scanBtn" class="btn" type="button">Start Scanning</button></div>
+  </div>
+</div>
+{% endblock %}

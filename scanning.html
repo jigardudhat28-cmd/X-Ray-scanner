@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Scanning{% endblock %}
+{% block content %}
+<div id="scanPage" class="stage" data-next="{{ url_for('result') }}">
+  <h1>Analyzing X-Ray...</h1>
+  <p class="status" style="margin:8px auto 22px" id="status">Preparing image...</p>
+  <div class="xray">
+    <img src="{{ url_for('uploaded_file', name=scan.file) }}" alt="X-ray being analyzed">
+    <div class="beam"></div>
+  </div>
+  <div class="bar" role="progressbar" aria-label="Scan progress"><i id="fill"></i></div>
+  <strong id="pct">0%</strong>
+</div>
+{% endblock %}
